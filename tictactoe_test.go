@@ -47,6 +47,54 @@ func TestPutToken01(t *testing.T) {
 
 }
 
+func TestcheckWin01(t *testing.T) {
+	b := &Board{
+		tokens: []int{1, 1, 1, 0, 0, 0, 0, 0, 0},
+	}
+	expect := 1
+	result := checkWin(b)
+	if result != expect {
+		t.Error("TestcheckWin01 is failed")
+	}
+
+}
+
+func TestcheckWin02(t *testing.T) {
+	b := &Board{
+		tokens: []int{1, 0, 0, 1, 0, 0, 1, 0, 0},
+	}
+	expect := 1
+	result := checkWin(b)
+	if result != expect {
+		t.Error("TestcheckWin02 is failed")
+	}
+
+}
+
+func TestcheckWin03(t *testing.T) {
+	b := &Board{
+		tokens: []int{-1, -1, -1, 0, 0, 0, 0, 0, 0},
+	}
+	expect := -1
+	result := checkWin(b)
+	if result != expect {
+		t.Error("TestcheckWin03 is failed")
+	}
+
+}
+
+func TestcheckWin04(t *testing.T) {
+	b := &Board{
+		tokens: []int{-1, 0, 0, 0, -1, 0, 0, 0, -1},
+	}
+	expect := -1
+	result := checkWin(b)
+	if result != expect {
+		t.Error("TestcheckWin04 is failed")
+	}
+
+}
+
 /*
 func TestPutToken01(t *testing.T) {
 	b := &Board{

@@ -60,13 +60,81 @@ func printBoard(b *Board) {
 	}
 }
 
-/*
-func checkWin(b *Board){
-	if b.tokens[0] == b.tokens[1] && b.tokens[1] == b.tokens[2]{
-
+func checkWin(b *Board) int {
+	if b.tokens[0] == b.tokens[1] && b.tokens[1] == b.tokens[2] { //横列
+		if b.tokens[0] == 0 {
+			return 0
+		} else if b.tokens[0] == 1 {
+			return 1
+		} else if b.tokens[0] == -1 {
+			return -1
+		}
 	}
+	if b.tokens[3] == b.tokens[4] && b.tokens[4] == b.tokens[5] { //横列
+		if b.tokens[3] == 0 {
+			return 0
+		} else if b.tokens[3] == 1 {
+			return 1
+		} else if b.tokens[3] == -1 {
+			return -1
+		}
+	}
+	if b.tokens[6] == b.tokens[7] && b.tokens[7] == b.tokens[8] { //横列
+		if b.tokens[6] == 0 {
+			return 0
+		} else if b.tokens[6] == 1 {
+			return 1
+		} else if b.tokens[6] == -1 {
+			return -1
+		}
+	}
+	if b.tokens[0] == b.tokens[3] && b.tokens[3] == b.tokens[6] { //たて列
+		if b.tokens[0] == 0 {
+			return 0
+		} else if b.tokens[0] == 1 {
+			return 1
+		} else if b.tokens[0] == -1 {
+			return -1
+		}
+	}
+	if b.tokens[1] == b.tokens[4] && b.tokens[4] == b.tokens[7] { //たて列
+		if b.tokens[1] == 0 {
+			return 0
+		} else if b.tokens[1] == 1 {
+			return 1
+		} else if b.tokens[1] == -1 {
+			return -1
+		}
+	}
+	if b.tokens[2] == b.tokens[5] && b.tokens[5] == b.tokens[8] { //たて列
+		if b.tokens[2] == 0 {
+			return 0
+		} else if b.tokens[2] == 1 {
+			return 1
+		} else if b.tokens[2] == -1 {
+			return -1
+		}
+	}
+	if b.tokens[0] == b.tokens[4] && b.tokens[4] == b.tokens[8] { //斜め
+		if b.tokens[0] == 0 {
+			return 0
+		} else if b.tokens[0] == 1 {
+			return 1
+		} else if b.tokens[0] == -1 {
+			return -1
+		}
+	}
+	if b.tokens[2] == b.tokens[4] && b.tokens[4] == b.tokens[6] { //斜め
+		if b.tokens[2] == 0 {
+			return 0
+		} else if b.tokens[2] == 1 {
+			return 1
+		} else if b.tokens[2] == -1 {
+			return -1
+		}
+	}
+	return 0
 }
-*/
 
 func main() {
 	b := &Board{
@@ -87,6 +155,16 @@ func main() {
 			grid := input(n_m)
 			b.put(grid[0], grid[1], "x")
 			printBoard(b)
+		}
+		if checkWin(b) == 1 {
+			fmt.Println("Player1 won")
+			break
+		} else if checkWin(b) == -1 {
+			fmt.Println("Player2 won")
+			break
+		}
+		if i == 8 {
+			fmt.Println("Draw")
 		}
 	}
 
