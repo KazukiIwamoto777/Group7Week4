@@ -21,6 +21,12 @@ func input(n_m string) [2]int {
 	return x
 }
 
+func (b *Board) init() {
+	for i := 0; i < 9; i++ {
+		b.tokens[i] = 0
+	}
+}
+
 func (b *Board) put(x, y int, u string) {
 
 	//	if x >= 0 && x <= 2 && y >= 0 && y <= 2 {
@@ -54,14 +60,53 @@ func printBoard(b *Board) {
 	}
 }
 
+/*
+func checkWin(b *Board){
+	if b.tokens[0] == b.tokens[1] && b.tokens[1] == b.tokens[2]{
+
+	}
+}
+*/
+
+func main() {
+	b := &Board{
+		tokens: []int{0, 0, 0, 0, 0, 0, 0, 0, 0},
+	}
+	var n_m string
+	for i := 0; i < 9; i++ {
+		if i%2 == 0 {
+			print("Player1 : input(x,y) ")
+			fmt.Scan(&n_m)
+			grid := input(n_m)
+			b.put(grid[0], grid[1], "o")
+			printBoard(b)
+		}
+		if i%2 == 1 {
+			print("Player2 : input(x,y) ")
+			fmt.Scan(&n_m)
+			grid := input(n_m)
+			b.put(grid[0], grid[1], "x")
+			printBoard(b)
+		}
+	}
+
+}
+
+/*
 func main() {
 	//		var board Board
 	//		board = ['.','.','.']
+	var grid [2]int
 	var n_m string
 	print("Player1 :input (x,y) ")
 	fmt.Scan(&n_m)
-	fmt.Println(input(n_m))
 
-	//x := input(n_m)
-	//	put(x[0], x[1], "o")
+	grid = input(n_m)
+
+	var b Board
+	//b := &Board{tokens: []int{0, 0, 0, 0, 0, 0, 0, 0, 0}}
+	b.init()
+	b.put(grid[0], grid[1], "o")
+	//printBoard(b)
 }
+*/
