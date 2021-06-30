@@ -1,6 +1,11 @@
-type Board struct {
-    tokens []int // tokens[0] -> (0,0), tokens[1] -> (0,1), ...
-}
+package main
 
-func (b *Board) put(x, y int, u string) // interface
-func (b *Board) get(x, y int) string // interface
+import "testing"
+
+func TestEx01(t *testing.T) {
+	expect := 1
+	result := input("1")
+	if result != expect {
+		t.Error("Test01 is failed")
+	}
+}
